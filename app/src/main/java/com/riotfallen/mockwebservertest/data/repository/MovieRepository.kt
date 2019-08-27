@@ -22,13 +22,13 @@ class MovieRepository(private val services: Services) {
         })
     }
 
-    fun getAllTvShows(callback: ResponseCallback<TvResponse>) {
-        services.getTvPopular().enqueue(object : Callback<TvResponse> {
-            override fun onFailure(call: Call<TvResponse>, t: Throwable) {
+    fun searchMovie(query: String, callback: ResponseCallback<MovieResponse>) {
+        services.searchMovie(query = query).enqueue(object : Callback<MovieResponse> {
+            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                 callback.onError(t.message)
             }
 
-            override fun onResponse(call: Call<TvResponse>, response: Response<TvResponse>) {
+            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 callback.onDataLoaded(response.body())
             }
 

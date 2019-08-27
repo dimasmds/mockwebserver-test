@@ -28,4 +28,20 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
 
         })
     }
+
+    fun searchMovie(query: String) {
+        state.value = State.LOADING
+        repository.searchMovie(query, object : ResponseCallback<MovieResponse> {
+            override fun onDataLoaded(data: MovieResponse?) {
+                state.value = State.LOADED
+                movies.value = data?.results
+            }
+
+            override fun onError(message: String?) {
+                state.value = State.ERROR
+                d("ERROR!", message)
+            }
+
+        })
+    }
 }

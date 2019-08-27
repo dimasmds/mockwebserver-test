@@ -1,7 +1,6 @@
 package com.riotfallen.mockwebservertest.data.repository
 
 import com.riotfallen.mockwebservertest.data.model.MovieResponse
-import com.riotfallen.mockwebservertest.data.model.TvResponse
 import com.riotfallen.mockwebservertest.data.network.Services
 import retrofit2.Call
 import retrofit2.Callback

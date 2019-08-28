@@ -1,25 +1,13 @@
 package com.riotfallen.mockwebservertest.ui.movie
 
-import android.view.View
-import android.view.ViewGroup
-import android.widget.AutoCompleteTextView
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.riotfallen.mockwebservertest.R
-import com.riotfallen.mockwebservertest.utils.Constant
-import com.riotfallen.mockwebservertest.utils.createResponse
-import com.riotfallen.mockwebservertest.utils.isDisplayed
-import com.riotfallen.mockwebservertest.utils.typeText
+import com.riotfallen.mockwebservertest.utils.*
+import kotlinx.android.synthetic.main.activity_home.view.*
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
-import org.hamcrest.Description
-import org.hamcrest.Matcher
-import org.hamcrest.Matchers
-import org.hamcrest.TypeSafeMatcher
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -58,5 +46,10 @@ class MovieActivityTest {
     @Test
     fun test_search_should_be_success() {
         mockWebServer.enqueue(mockResponseSuccess)
+
+        R.id.searchView.typeText("Marvel")
+        R.id.searchButton.click()
+
+        R.id.recyclerView.isDisplayed()
     }
 }

@@ -30,22 +30,11 @@ class MovieActivity : AppCompatActivity() {
         movieViewModel.state.observe(this, stateObserver)
         movieViewModel.movies.observe(this, movieObserver)
 
-        searchView.setOnQueryTextListener(object :
-            androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query != null) {
-                    movieViewModel.searchMovie(query)
-                }
-                return true
-            }
+        searchButton.setOnClickListener {
+            val query = searchView.text.toString().trim()
+            movieViewModel.searchMovie(query)
+        }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                if (newText != null) {
-                    movieViewModel.searchMovie(newText)
-                }
-                return true
-            }
-        })
     }
 
     private val movieObserver = Observer<List<MovieResponse.Movie>?> {

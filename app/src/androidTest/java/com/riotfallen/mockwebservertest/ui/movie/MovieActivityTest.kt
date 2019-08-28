@@ -5,7 +5,6 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.riotfallen.mockwebservertest.R
 import com.riotfallen.mockwebservertest.utils.*
-import kotlinx.android.synthetic.main.activity_home.view.*
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
